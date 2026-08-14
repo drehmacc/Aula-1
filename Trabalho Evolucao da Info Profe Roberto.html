@@ -1,0 +1,543 @@
+Trab Evolucao da Info Profe Roberto
+1
+100%
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolução da Informática & O Futuro da Computação</title>
+    <style>
+        /* CSS: Estilização Geral e Tema */
+        :root {
+            --primary: #00adb5;
+            --secondary: #393e46;
+            --bg: #1b2028;
+            --card-bg: #2a303c;
+            --text: #eeeeee;
+            --accent: #00fff5;
+            --future-glow: #7952b3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1f242d 0%, #00adb5 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            background-color: #15181e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Estilização dos Filtros */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-filter {
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-filter:hover, .btn-filter.active {
+            background-color: var(--primary);
+            color: #121212;
+            box-shadow: 0 0 10px rgba(0, 173, 181, 0.5);
+        }
+
+        /* Linha do Tempo / Evolução */
+        .timeline-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-card {
+                flex-direction: row;
+                align-items: center;
+            }
+            .timeline-card img {
+                width: 260px;
+                height: 160px;
+                object-fit: cover;
+            }
+        }
+
+        .timeline-card img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .timeline-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        /* Grid das Mentes Brilhantes */
+        .grid-mentes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-mente {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s, border-color 0.3s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-mente:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-mente img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-mente-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .card-mente-content h3 {
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .card-mente-content .tag-era {
+            display: inline-block;
+            background-color: rgba(0, 173, 181, 0.2);
+            color: var(--primary);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.6rem;
+            font-weight: bold;
+        }
+
+        .card-mente-content span.periodo {
+            font-size: 0.85rem;
+            color: #aaa;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Seção Futuro / IA e Quântica */
+        .future-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .future-card {
+            background: linear-gradient(145deg, #2a303c 0%, #1e2430 100%);
+            border: 1px solid rgba(121, 82, 179, 0.5);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        }
+
+        .future-card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
+        .future-card h3 {
+            color: #b892ff;
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--secondary);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Botão Voltar ao Topo */
+        #btnTopo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--bg);
+            border: none;
+            padding: 0.8rem 1.1rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .oculto {
+            display: none !important;
+        }
+    </style>
+</head>
+</body>
+
+    <header>
+        <h1>A Evolução da Informática</h1>
+        <p>Dos Primeiros Algoritmos à Era da IA Generativa e Computação Quântica</p>
+    </header>
+
+    <nav>
+        <a href="#filtros">Explorar por Época</a>
+        <a href="#evolucao">Linha do Tempo</a>
+        <a href="#mentes">12 Mentes Brilhantes</a>
+        <a href="#futuro">O Futuro (IA e Quântica)</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="filtros">
+            <h2 style="justify-content: center;">Filtrar por Época Histórica</h2>
+            <div class="filter-container">
+                <button class="btn-filter active" onclick="filtrarPorEra('todos', this)">Todas as Épocas</button>
+                <button class="btn-filter" onclick="filtrarPorEra('pioneiros', this)">Pioneiros (Até Séc. XIX)</button>
+                <button class="btn-filter" onclick="filtrarPorEra('1900-1960', this)">1900 – 1960 (Válvulas & Transistores)</button>
+                <button class="btn-filter" onclick="filtrarPorEra('1970-1990', this)">1970 – 1990 (PCs & Web)</button>
+                <button class="btn-filter" onclick="filtrarPorEra('futuro', this)">Atualidade & Futuro (IA / Quântica)</button>
+            </div>
+        </section>
+
+        <section id="evolucao">
+            <h2>Principais Marcos da Evolução</h2>
+
+            <div class="timeline-card" data-era="pioneiros">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80" alt="Ábaco e Cálculo Manual">
+                <div>
+                    <h3>1. Era Pré-Eletrônica (Antiguidade ao Século XIX)</h3>
+                    <p>Iniciou-se com o <strong>Ábaco</strong>, passando pelas calculadoras mecânicas de Pascal e Leibniz. No século XIX, Charles Babbage idealizou a máquina analítica e Ada Lovelace escreveu o primeiro programa de computador.</p>
+                </div>
+            </div>
+
+            <div class="timeline-card" data-era="1900-1960">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" alt="Válvulas Eletrônicas">
+                <div>
+                    <h3>2. 1ª Geração: Válvulas e Turing (1940 - 1955)</h3>
+                    <p>Surgimento de computadores gigantescos como o <strong>ENIAC</strong> e contribuições cruciais de Alan Turing. Utilizavam válvulas termiônicas, consumiam muita energia e realizavam cálculos em milissegundos.</p>
+                </div>
+            </div>
+
+            <div class="timeline-card" data-era="1900-1960">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=80" alt="Placa com Transistores">
+                <div>
+                    <h3>3. 2ª e 3ª Geração: Transistores e Circuitos Integrados (1955 - 1970)</h3>
+                    <p>A invenção do <strong>transistor</strong> e posteriormente do chip de silício (circuito integrado) reduziu o tamanho das máquinas drasticamente, originando linguagens como FORTRAN e COBOL.</p>
+                </div>
+            </div>
+
+            <div class="timeline-card" data-era="1970-1990">
+                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=500&q=80" alt="Microprocessadores e PCs">
+                <div>
+                    <h3>4. Microprocessadores e a Revolução Pessoal (1970 - 2000)</h3>
+                    <p>Surgem os microprocessadores, o computador pessoal (Apple, Microsoft), os sistemas operacionais modernos, a linguagem C, o Linux e a expansão global da <strong>World Wide Web</strong> com Tim Berners-Lee.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mentes">
+            <h2>12 Mentes Brilhantes da Computação</h2>
+            <div class="grid-mentes" id="gridMentes">
+                </div>
+        </section>
+
+        <section id="futuro">
+            <h2>O Futuro da Computação</h2>
+            <div class="future-card-grid">
+                <div class="future-card">
+                    <h3>🤖 Inteligência Artificial Generativa</h3>
+                    <p>A IA evoluiu do aprendizado de máquina tradicional para modelos capazes de criar texto, código, imagens e áudio com autonomia. Tecnologias baseadas em arquiteturas <em>Transformers</em> estão redefinindo como interagimos com o conhecimento humano e automatizamos soluções complexas.</p>
+                </div>
+
+                <div class="future-card">
+                    <h3>⚛️ Computação Quântica</h3>
+                    <p>Substituindo os bits tradicionais (0 ou 1) por <strong>qubits</strong> (graças à superposição e emaranhamento quântico), os computadores quânticos prometem resolver em segundos problemas de criptografia, simulação molecular e otimização que levariam milênios em supercomputadores comuns.</p>
+                </div>
+
+                <div class="future-card">
+                    <h3>🧠 Computação Neuromórfica e Biológica</h3>
+                    <p>Processadores inspirados no funcionamento biológico do cérebro humano que consomem frações mínimas de energia, além do uso de cadeias de DNA para armazenamento massivo de dados com durabilidade de milênios.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <button id="btnTopo" onclick="voltarAoTopo()" title="Voltar ao topo">↑</button>
+
+    <footer>
+        <p>&copy; Evolução da Informática - Projeto Interativo com HTML, CSS e JavaScript</p>
+    </footer>
+
+    <script>
+        /* JAVASCRIPT: Dados, Filtros e Interatividade */
+
+        const mentes = [
+            {
+                nome: "Ada Lovelace",
+                era: "pioneiros",
+                eraRotulo: "Século XIX",
+                periodo: "1815 - 1852",
+                atuacao: "Primeira programadora da história. Criou o primeiro algoritmo para ser processado pela Máquina Analítica.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            },
+            {
+                nome: "Charles Babbage",
+                era: "pioneiros",
+                eraRotulo: "Século XIX",
+                periodo: "1791 - 1871",
+                atuacao: "Projetou a Máquina Diferencial e a Máquina Analítica, lançando as bases conceituais do computador moderno.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/d/d2/Charles_Babbage_1860.jpg"
+            },
+            {
+                nome: "Alan Turing",
+                era: "1900-1960",
+                eraRotulo: "Anos 1900-1960",
+                periodo: "1912 - 1954",
+                atuacao: "Pai da ciência da computação e da Inteligência Artificial. Formulou a Máquina de Turing e decifrou a Enigma.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg"
+            },
+            {
+                nome: "John von Neumann",
+                era: "1900-1960",
+                eraRotulo: "Anos 1900-1960",
+                periodo: "1903 - 1957",
+                atuacao: "Desenvolveu a Arquitetura de Von Neumann, modelo de memória e processamento utilizado até hoje nos computadores.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/d/d6/JohnvonNeumann-LosAlamos.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            },
+            {
+                nome: "Grace Hopper",
+                era: "1900-1960",
+                eraRotulo: "Anos 1900-1960",
+                periodo: "1906 - 1992",
+                atuacao: "Criou o primeiro compilador da história e foi pioneira no desenvolvimento da linguagem COBOL.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            },
+            {
+                nome: "Claude Shannon",
+                era: "1900-1960",
+                eraRotulo: "Anos 1900-1960",
+                periodo: "1916 - 2001",
+                atuacao: "Pai da Teoria da Informação. Relacionou álgebra booleana a circuitos elétricos digitais.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/9/99/ClaudeShannon_MFO3807.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            },
+            {
+                nome: "Dennis Ritchie",
+                era: "1970-1990",
+                eraRotulo: "Anos 1970-1990",
+                periodo: "1941 - 2011",
+                atuacao: "Criador da linguagem de programação C e co-criador do sistema operacional Unix.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/2/23/Dennis_Ritchie_2011.jpg"
+            },
+            {
+                nome: "Steve Jobs",
+                era: "1970-1990",
+                eraRotulo: "Anos 1970-1990",
+                periodo: "1955 - 2011",
+                atuacao: "Co-fundador da Apple. Revolucionou a computação pessoal, fontes tipográficas, iPod e smartphones.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/5/51/Steve_Jobs_Headshot_2010_%28cropped_4%29.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            },
+            {
+                nome: "Bill Gates",
+                era: "1970-1990",
+                eraRotulo: "Anos 1970-1990",
+                periodo: "1955 - Presente",
+                atuacao: "Co-fundador da Microsoft. Liderou a popularização do software com o Windows e o pacote Office.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg"
+            },
+            {
+                nome: "Tim Berners-Lee",
+                era: "1970-1990",
+                eraRotulo: "Anos 1970-1990",
+                periodo: "1955 - Presente",
+                atuacao: "Inventor da World Wide Web (WWW), do protocolo HTTP e do HTML, conectando o mundo em rede.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg"
+            },
+            {
+                nome: "Linus Torvalds",
+                era: "1970-1990",
+                eraRotulo: "Anos 1970-1990",
+                periodo: "1969 - Presente",
+                atuacao: "Criador do Kernel do Linux e do Git, pedras angulares dos servidores e do desenvolvimento mundial.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/LinuxCon_Europe_Linus_Torvalds_03.jpg/960px-LinuxCon_Europe_Linus_Torvalds_03.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+            },
+            {
+                nome: "Margaret Hamilton",
+                era: "1900-1960",
+                eraRotulo: "Anos 1900-1960",
+                periodo: "1936 - Presente",
+                atuacao: "Diretora da Engenharia de Software no MIT para a missão Apollo 11 da NASA, cunhando o termo 'Engenharia de Software'.",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/5/56/Margaret_Hamilton_in_Nothing_Sacred_2.jpg?utm_source=pt.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+            }
+        ];
+
+        // Renderiza os cards das mentes brilhantes
+        function carregarMentes() {
+            const grid = document.getElementById('gridMentes');
+            grid.innerHTML = '';
+            mentes.forEach(mente => {
+                const card = document.createElement('div');
+                card.className = 'card-mente';
+                card.setAttribute('data-era', mente.era);
+                card.innerHTML = `
+                    <img src="${mente.imagem}" alt="${mente.nome}">
+                    <div class="card-mente-content">
+                        <span class="tag-era">${mente.eraRotulo}</span>
+                        <h3>${mente.nome}</h3>
+                        <span class="periodo">${mente.periodo}</span>
+                        <p>${mente.atuacao}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Função de Filtro Dinâmico por Era
+        function filtrarPorEra(eraSelecionada, botao) {
+            // Atualizar botões ativos
+            document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+            if(botao) botao.classList.add('active');
+
+            // Filtrar Mentes Brilhantes
+            const cardsMentes = document.querySelectorAll('.card-mente');
+            cardsMentes.forEach(card => {
+                const eraCard = card.getAttribute('data-era');
+                if (eraSelecionada === 'todos' || eraCard === eraSelecionada) {
+                    card.classList.remove('oculto');
+                } else {
+                    card.classList.add('oculto');
+                }
+            });
+
+            // Filtrar Linha do Tempo
+            const cardsTimeline = document.querySelectorAll('.timeline-card');
+            cardsTimeline.forEach(card => {
+                const eraCard = card.getAttribute('data-era');
+                if (eraSelecionada === 'todos' || eraCard === eraSelecionada) {
+                    card.classList.remove('oculto');
+                } else {
+                    card.classList.add('oculto');
+                }
+            });
+
+            // Rolagem suave até as seções filtradas
+            if(eraSelecionada === 'futuro') {
+                document.getElementById('futuro').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Controle do botão "Voltar ao Topo"
+        window.onscroll = function() {
+            const btn = document.getElementById("btnTopo");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function voltarAoTopo() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Inicializar na carga do documento
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarMentes();
+        });
+    </script>
+</body>
+</html>
